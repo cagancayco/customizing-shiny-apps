@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>MAIN.utf8</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="MAIN_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="MAIN_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal .slide-menu-button {
+      left: 105px !important;
+    }
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link href="MAIN_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="MAIN_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level2">
+
+<style>
+.container{
+    display: flex;
+}
+.colsmall {
+    flex: 0.5;
+}
+.col{
+    flex: 1;
+}
+.col2{
+    flex: 2;
+}
+.col3{
+    flex: 3;
+}
+.col4{
+    flex: 4;
+}
+</style>
+<style type="text/css">
+  .reveal p {
+    text-align: left;
+  }
+  .reveal ul {
+    display: block;
+  }
+  .reveal ol {
+    display: block;
+  }
+</style>
+</section>
+<section id="section" class="title-slide slide level1" data-background-image="./images/title-slide.jpg"><h1></h1></section>
+<section><section id="four-approaches-to-styling-shiny" class="title-slide slide level1"><h1>Four Approaches to Styling Shiny</h1></section><section id="credit-where-credit-is-due" class="slide level2">
+<h2>Credit where credit is due…</h2>
+<p><img src=./images/styling-shiny-talk.png style="height:60%;width:60%;display:block;margin-left:auto;margin-right:auto"></img></p>
+<p><a href="https://rstudio.com/resources/rstudioconf-2020/styling-shiny-apps-with-sass-and-bootstrap-4/">Watch the Talk!</a></p>
+</section></section>
+<section><section id="method-1-accepting-the-shiny-defaults" class="title-slide slide level1"><h1>Method 1: Accepting the Shiny Defaults</h1></section><section id="method-1-accepting-the-shiny-defaults-1" class="slide level2">
+<h2>Method 1: Accepting the Shiny Defaults</h2>
+<p><img src=./images/defaults.png style="height:90%;width:90%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="fluidpage" class="slide level2">
+<h2>fluidPage()</h2>
+<p>Replace <code>fluidPage()</code> with <code>tagList()</code></p>
+<p><img src=./images/html.png style="height:80%;width:80%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="built-with-bootstrap" class="slide level2">
+<h2>Built with Bootstrap</h2>
+<ul>
+<li><p>Shiny’s default UI uses Bootstrap</p></li>
+<li><p>Bootstrap is a CSS framework developed by Twitter</p></li>
+<li><p>Easy to customize if you’re comfortable with HTML and CSS</p></li>
+</ul>
+</section><section id="millions-of-websites-use-bootstrap" class="slide level2">
+<h2>Millions of websites use Bootstrap</h2>
+<p><img src=./images/bootstrap.png style="height:80%;width:80%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="millions-of-websites-use-bootstrap-1" class="slide level2">
+<h2>Millions of websites use Bootstrap</h2>
+<p><img src=./images/rc-website.png style="height:80%;width:80%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="four-approaches-to-shiny-styling" class="slide level2">
+<h2>Four approaches to Shiny styling</h2>
+<ul>
+<li>Method 1: Accepting the Shiny Defaults</li>
+</ul>
+</section></section>
+<section><section id="method-2-shiny-themes" class="title-slide slide level1"><h1>Method 2: Shiny Themes</h1></section><section id="method-2-shiny-themes-1" class="slide level2">
+<h2>Method 2: Shiny Themes</h2>
+<p>The <code>shinythemes</code> package helps you spice up your app</p>
+<p><img src=./images/shinythemes.png style="height:80%;width:80%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="shinythemes" class="slide level2">
+<h2>shinythemes</h2>
+<ol type="1">
+<li><p><code>install.packages("shinythemes")</code></p></li>
+<li><p>Add <code>library(shinythemes)</code> to <code>app.R</code> or <code>ui.R</code></p></li>
+<li><p>Add the <code>theme</code> argument to your <code>fluidPage()</code>, <code>navbarPage()</code>, etc. Set <code>theme</code> with <code>shinytheme("&lt;theme&gt;")</code></p></li>
+</ol>
+<p><img src=./images/shinytheme-code.png style="height:80%;width:80%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="bootswatch" class="slide level2">
+<h2>Bootswatch</h2>
+<p>All Shiny Themes come from <a href="bootswatch.com">bootswatch.com</a></p>
+<p><img src=./images/bootswatch.png style="height:75%;width:75%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="four-approaches-to-shiny-styling-1" class="slide level2">
+<h2>Four approaches to Shiny styling</h2>
+<ul>
+<li><p>Method 1: Accepting the Shiny Defaults</p></li>
+<li><p>Method 2: Shiny Themes</p></li>
+</ul>
+</section></section>
+<section><section id="method-3-dashboards" class="title-slide slide level1"><h1>Method 3: Dashboards</h1></section><section id="method-3-dashboards-1" class="slide level2">
+<h2>Method 3: Dashboards</h2>
+<p>Packages like <code>flexdashboard</code> and <code>shinydashboard</code> let you create dashboards for your users</p>
+<p><img src=./images/dashboard.png style="height:75%;width:75%;display:block;margin-left:auto;margin-right:auto"></img></p>
+<p><a href="https://gallery.shinyapps.io/087-crandash/">https://gallery.shinyapps.io/087-crandash/</a></p>
+</section><section id="flexdashboard-vs-shinydashboard" class="slide level2">
+<h2><code>flexdashboard</code> vs <code>shinydashboard</code></h2>
+<table>
+<thead>
+<tr class="header">
+<th><code>flexdashboard</code></th>
+<th><code>shinydashboard</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R Markdown</td>
+<td>Shiny UI code</td>
+</tr>
+<tr class="even">
+<td>Super easy</td>
+<td>Not quite as easy</td>
+</tr>
+<tr class="odd">
+<td>Static or dynamic</td>
+<td>Dynamic</td>
+</tr>
+<tr class="even">
+<td>CSS flexbox layout</td>
+<td>Bootstrap grid layout</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>We’ll just touch on some shinydashboard basics today</p>
+<p><br></p>
+<p><a href="http://rstudio.github.io/shinydashboard/get_started.html">http://rstudio.github.io/shinydashboard/get_started.html</a></p>
+</section><section id="components-of-a-dashboard" class="slide level2">
+<h2>Components of a dashboard</h2>
+<ol type="1">
+<li><p>Header</p></li>
+<li><p>Sidebar</p></li>
+<li><p>Body</p></li>
+</ol>
+<p><img src=./images/blank-dashboard.png style="height:85%;width:85%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="add-app-components-to-the-body-with-boxes" class="slide level2">
+<h2>Add app components to the body with <strong>boxes</strong></h2>
+<p>Boxes need to be put in a <code>fluidRow</code> or <code>column</code></p>
+<p><img src=./images/boxes-code.png style="height:85%;width:85%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="add-app-components-to-the-body-with-boxes-1" class="slide level2">
+<h2>Add app components to the body with <strong>boxes</strong></h2>
+<p><br></p>
+<p><img src=./images/boxes.png></img></p>
+</section><section id="add-menu-items-to-the-sidebar" class="slide level2">
+<h2>Add <strong>menu items</strong> to the sidebar</h2>
+<ul>
+<li><p>We’ll add <code>menuItems</code> that behave like tabs, similar to <code>tabPanel</code></p></li>
+<li><p><code>menuItems</code> in the sidebar correspond to <code>tabItems</code> in the body</p></li>
+</ul>
+<p><img src=./images/menu-items-code.png style="height:60%;width:60%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="add-menu-items-to-the-sidebar-1" class="slide level2">
+<h2>Add <strong>menu items</strong> to the sidebar</h2>
+<p><img src=./images/menu-items.png style="height:60%;width:60%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="change-color-of-dashboard" class="slide level2">
+<h2>Change color of dashboard</h2>
+<p>You can change the color of your dashboard with the <code>skin</code> argument (similar to <code>theme</code> with <code>shinythemes</code>)</p>
+<p><img src=./images/dashboard-skin.png></img></p>
+</section><section id="four-approaches-to-shiny-styling-2" class="slide level2">
+<h2>Four approaches to Shiny styling</h2>
+<ul>
+<li><p>Method 1: Accepting the Shiny Defaults</p></li>
+<li><p>Method 2: Shiny Themes</p></li>
+<li><p>Method 3: Dashboards</p></li>
+</ul>
+</section></section>
+<section><section id="method-4-bootstraplib" class="title-slide slide level1"><h1>Method 4: Bootstraplib</h1></section><section id="common-shiny-question" class="slide level2">
+<h2>Common Shiny Question</h2>
+<p>How do I customize my app so the fonts and colors match my university’s?</p>
+<p><img src=./images/uva-website.png style="display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="uva-branding" class="slide level2">
+<h2>UVA Branding</h2>
+<p><img src=./images/brand.png style="height:75%;width:75%;display:block;margin-left:auto;margin-right:auto"></img></p>
+<p><a href="https://brand.virginia.edu/">https://brand.virginia.edu/</a></p>
+</section><section id="modifying-css" class="slide level2">
+<h2>Modifying CSS</h2>
+<ul>
+<li><p>Requires you to know at least some CSS</p></li>
+<li><p>Each color value appears in multiple places</p></li>
+</ul>
+</section><section id="syntatically-awesome-style-sheets" class="slide level2">
+<h2>Syntatically Awesome Style Sheets</h2>
+<h3 id="css-with-superpowers">CSS with Superpowers</h3>
+<p><br></p>
+<p><img src=./images/sass.png style="height:50%;width:50%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="sass-allows-you-to-change-colors-and-fonts-using-variables" class="slide level2">
+<h2>Sass allows you to change colors and fonts using variables</h2>
+<p><img src=./images/sass-compiler.png style="height:95%;width:95%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="customize-bootstrap-with-sass" class="slide level2">
+<h2>Customize Bootstrap with Sass</h2>
+<p>Need to install 2 packages</p>
+<ol type="1">
+<li><p><strong>sass</strong>: compile sass to css in R</p></li>
+<li><p><strong>bootstraplib</strong>: customize Bootstrap in R</p></li>
+</ol>
+<ul>
+<li><p>bootstraplib was developed by RStudio but is not yet available in CRAN</p></li>
+<li><p>Can use with CRAN shiny, but need development version to use latest bootstraplib functions</p></li>
+<li><p>installation: <code>remotes::install_github("rstudio/bootstraplib")</code></p></li>
+</ul>
+</section><section id="bootstraplib-with-cran-shiny" class="slide level2">
+<h2><code>bootstraplib</code> with CRAN shiny</h2>
+<ol type="1">
+<li>Start with regular shiny UI</li>
+</ol>
+<pre><code>library(shiny)
+
+ui &lt;- fluidPage(
+...
+)</code></pre>
+</section><section id="bootstraplib" class="slide level2">
+<h2><code>bootstraplib</code></h2>
+<ol type="1">
+<li><p>Start with regular shiny UI</p></li>
+<li><p>Load <code>bootstraplib</code> and initialize new theme</p></li>
+</ol>
+<pre><code>library(shiny)
+library(bootstraplib)
+
+bs_theme_new()
+
+ui &lt;- fluidPage(
+...
+)</code></pre>
+</section><section id="bootstraplib-1" class="slide level2">
+<h2><code>bootstraplib</code></h2>
+<ol type="1">
+<li><p>Start with regular shiny UI</p></li>
+<li><p>Load <code>bootstraplib</code> and initialize new theme</p></li>
+<li><p>Set your variable overrides</p></li>
+</ol>
+<pre><code>library(shiny)
+library(bootstraplib)
+
+bs_theme_new()
+
+bs_theme_add_variables(
+  &quot;body_bg&quot; = &quot;indigo&quot;,
+  &quot;primary&quot; = &quot;orange&quot;
+)
+
+ui &lt;- fluidPage(
+...
+)</code></pre>
+</section><section id="bootstraplib-2" class="slide level2">
+<h2><code>bootstraplib</code></h2>
+<ol type="1">
+<li><p>Start with regular shiny UI</p></li>
+<li><p>Load <code>bootstraplib</code> and initialize new theme</p></li>
+<li><p>Set your variable overrides</p></li>
+<li><p>Build and insert your new bootstrap theme</p></li>
+</ol>
+<pre><code>library(shiny)
+library(bootstraplib)
+
+bs_theme_new()
+
+bs_theme_add_variables(
+  &quot;body_bg&quot; = &quot;blue&quot;,
+  &quot;primary&quot; = &quot;orange&quot;
+)
+
+ui &lt;- fluidPage(bootstrap(),
+...
+)</code></pre>
+</section><section id="how-do-i-find-out-bootstrap-variable-names" class="slide level2">
+<h2>How do I find out Bootstrap variable names?</h2>
+<ul>
+<li><p>List of Bootstrap sass variables:</p>
+<p><a href="https://bit.ly/bs3-sass-vars">https://bit.ly/bs3-sass-vars</a></p></li>
+<li><p>Bootstraplib recipes: <a href="https://rstudio.github.io/bootstraplib/articles/recipes.html">https://rstudio.github.io/bootstraplib/articles/recipes.html</a></p></li>
+</ul>
+</section><section id="bootstraplib-with-development-shiny" class="slide level2">
+<h2><code>bootstraplib</code> with development shiny</h2>
+<ul>
+<li><p>More straightforward</p></li>
+<li><p>Geared toward the Bootstrap 4 upgrade</p></li>
+<li><p>Allows you to preview themes in real time</p></li>
+</ul>
+<p>Install dev shiny with <code>remotes::install_github("rstudio/shiny")</code></p>
+</section><section id="bootstraplib-with-development-shiny-1" class="slide level2">
+<h2><code>bootstraplib</code> with development shiny</h2>
+<pre><code>library(shiny)
+library(bootstraplib)
+
+my_theme &lt;- bs_theme(&quot;primary&quot; = &quot;#232D4B&quot;,
+              &quot;secondary&quot; = &quot;white&quot;,
+              &quot;body-bg&quot; = &quot;orange&quot;)
+
+# Define UI for random distribution app ----
+ui &lt;- fluidPage(
+  theme = my_theme,
+  ...
+)  </code></pre>
+</section><section id="previewing-a-theme-with-bs_theme_preview" class="slide level2">
+<h2>Previewing a theme with <code>bs_theme_preview()</code></h2>
+<pre><code>my_theme &lt;- bs_theme(&quot;primary&quot; = &quot;#232D4B&quot;,
+              &quot;secondary&quot; = &quot;white&quot;,
+              &quot;body-bg&quot; = &quot;orange&quot;)
+              
+bs_theme_preview(my_theme)</code></pre>
+<p><img src=./images/bs_theme_preview.png style="height:75%;width:75%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="previewing-your-app-with-run_with_themer" class="slide level2">
+<h2>Previewing your app with <code>run_with_themer()</code></h2>
+<ol type="1">
+<li><p>Setwd to your app directory</p></li>
+<li><p>Run <code>run_with_themer()</code> in console</p></li>
+</ol>
+<p><img src=./images/run_with_themer.png style="height:75%;width:75%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="copy-updates-to-app.r" class="slide level2">
+<h2>Copy updates to app.R</h2>
+<pre><code>my_theme &lt;- bs_theme(&quot;primary&quot; = &quot;#232D4B&quot;,
+              &quot;secondary&quot; = &quot;white&quot;,
+              &quot;body-bg&quot; = &quot;orange&quot;)
+              
+my_theme &lt;- bs_theme_update(my_theme, bg = &quot;#4B3E23&quot;, fg = &quot;#000000&quot;)</code></pre>
+</section><section id="theming-plots" class="slide level2">
+<h2>Theming Plots</h2>
+<p>The <code>thematic</code> package enables automatic theming of plots</p>
+<p>Install thematic with <code>remotes::install_github("rstudio/shiny")</code></p>
+<pre><code>library(thematic)
+
+thematic_on(font = &quot;auto&quot;)
+shiny::onStop(thematic_off)</code></pre>
+</section><section id="great-for-dark-mode" class="slide level2">
+<h2>Great for Dark Mode!</h2>
+<p><img src=./images/plot.png style="height:95%;width:95%;display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="questions" class="slide level2">
+<h2>Questions?</h2>
+<p><a href="mailto:hpc-support@virginia.edu" class="email">hpc-support@virginia.edu</a></p>
+<table>
+<thead>
+<tr class="header">
+<th>Office Hours</th>
+<th>Zoom Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tuesday 3-5pm</td>
+<td><a href="https://virginia.zoom.us/j/304271094" class="uri">https://virginia.zoom.us/j/304271094</a></td>
+</tr>
+<tr class="even">
+<td>Wednesday 3-5pm</td>
+<td><a href="https://virginia.zoom.us/s/812332138" class="uri">https://virginia.zoom.us/s/812332138</a></td>
+</tr>
+<tr class="odd">
+<td>Thursday 10am-12pm</td>
+<td><a href="https://virginia.zoom.us/j/723009972" class="uri">https://virginia.zoom.us/j/723009972</a></td>
+</tr>
+</tbody>
+</table>
+</section></section>
+    </div>
+  </div>
+
+  <script src="MAIN_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="MAIN_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+        menu: {
+          custom: false,
+          themes: false,
+          transitions: false
+        },
+
+
+
+        chalkboard: {
+        },
+
+        keyboard: {
+          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'MAIN_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: 'MAIN_files/reveal.js-3.3.0.1/plugin/search/search.js', async: true },
+          { src: 'MAIN_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
+          { src: 'MAIN_files/reveal.js-3.3.0.1/plugin/menu/menu.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
