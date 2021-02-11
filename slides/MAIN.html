@@ -644,129 +644,58 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <p>Need to install 2 packages</p>
 <ol type="1">
 <li><p><strong>sass</strong>: compile sass to css in R</p></li>
-<li><p><strong>bootstraplib</strong>: customize Bootstrap in R</p></li>
+<li><p><strong>bslib</strong>: customize Bootstrap in R</p></li>
 </ol>
-<ul>
-<li><p>bootstraplib was developed by RStudio but is not yet available in CRAN</p></li>
-<li><p>Can use with CRAN shiny, but need development version to use latest bootstraplib functions</p></li>
-<li><p>installation: <code>remotes::install_github("rstudio/bootstraplib")</code></p></li>
-</ul>
-</section><section id="bootstraplib-with-cran-shiny" class="slide level2">
-<h2><code>bootstraplib</code> with CRAN shiny</h2>
+<p><a href="https://rstudio.github.io/bslib/">https://rstudio.github.io/bslib/</a></p>
+</section><section id="start-with-regular-shiny-code" class="slide level2">
+<h2>Start with regular Shiny code</h2>
 <ol type="1">
-<li>Start with regular shiny UI</li>
+<li>Load bslib</li>
+<li>Instantiate a <code>bs_theme</code> object</li>
+<li>Set <code>theme</code> to your <code>bs_theme</code> object in the UI</li>
 </ol>
 <pre><code>library(shiny)
+library(bslib) # step 1
+
+my_theme &lt;- bs_theme() # step 2
 
 ui &lt;- fluidPage(
-...
-)</code></pre>
-</section><section id="bootstraplib" class="slide level2">
-<h2><code>bootstraplib</code></h2>
+  theme = my_theme, # step 3
+  ...
+)  </code></pre>
+</section><section id="preview-your-app" class="slide level2">
+<h2>Preview your app</h2>
 <ol type="1">
-<li><p>Start with regular shiny UI</p></li>
-<li><p>Load <code>bootstraplib</code> and initialize new theme</p></li>
+<li>Add <code>bs_themer()</code> to your server function</li>
 </ol>
 <pre><code>library(shiny)
-library(bootstraplib)
+library(bslib) # step 1
 
-bs_theme_new()
-
-ui &lt;- fluidPage(
 ...
-)</code></pre>
-</section><section id="bootstraplib-1" class="slide level2">
-<h2><code>bootstraplib</code></h2>
-<ol type="1">
-<li><p>Start with regular shiny UI</p></li>
-<li><p>Load <code>bootstraplib</code> and initialize new theme</p></li>
-<li><p>Set your variable overrides</p></li>
-</ol>
-<pre><code>library(shiny)
-library(bootstraplib)
 
-bs_theme_new()
+server &lt;- function(input, output){
+   bs_themer()
+   
+   ##cool reactive logic##
+}
+</code></pre>
+</section><section id="adjust-colors-and-fonts" class="slide level2">
+<h2>Adjust colors and fonts</h2>
+<p><img src=./images/bslib.gif style="display:block;margin-left:auto;margin-right:auto"></img></p>
+</section><section id="copy-updates-to-app.r" class="slide level2">
+<h2>Copy updates to app.R</h2>
+<p>When you make changes in the Preview tool, code for updating your theme is printed to the console. Copy the updates to your Shiny app.</p>
+<pre><code>my_theme &lt;- bs_theme()
 
-bs_theme_add_variables(
-  &quot;body_bg&quot; = &quot;indigo&quot;,
-  &quot;primary&quot; = &quot;orange&quot;
-)
-
-ui &lt;- fluidPage(
-...
-)</code></pre>
-</section><section id="bootstraplib-2" class="slide level2">
-<h2><code>bootstraplib</code></h2>
-<ol type="1">
-<li><p>Start with regular shiny UI</p></li>
-<li><p>Load <code>bootstraplib</code> and initialize new theme</p></li>
-<li><p>Set your variable overrides</p></li>
-<li><p>Build and insert your new bootstrap theme</p></li>
-</ol>
-<pre><code>library(shiny)
-library(bootstraplib)
-
-bs_theme_new()
-
-bs_theme_add_variables(
-  &quot;body_bg&quot; = &quot;blue&quot;,
-  &quot;primary&quot; = &quot;orange&quot;
-)
-
-ui &lt;- fluidPage(bootstrap(),
-...
-)</code></pre>
+# This line is copied from the console              
+my_theme &lt;- bs_theme_update(my_theme, bg = &quot;#4B3E23&quot;, fg = &quot;#000000&quot;)</code></pre>
 </section><section id="how-do-i-find-out-bootstrap-variable-names" class="slide level2">
 <h2>How do I find out Bootstrap variable names?</h2>
 <ul>
 <li><p>List of Bootstrap sass variables:</p>
-<p><a href="https://bit.ly/bs3-sass-vars">https://bit.ly/bs3-sass-vars</a></p></li>
+<p><a href="https://bit.ly/bs4-sass-vars">https://bit.ly/bs4-sass-vars</a></p></li>
 <li><p>Bootstraplib recipes: <a href="https://rstudio.github.io/bootstraplib/articles/recipes.html">https://rstudio.github.io/bootstraplib/articles/recipes.html</a></p></li>
 </ul>
-</section><section id="bootstraplib-with-development-shiny" class="slide level2">
-<h2><code>bootstraplib</code> with development shiny</h2>
-<ul>
-<li><p>More straightforward</p></li>
-<li><p>Geared toward the Bootstrap 4 upgrade</p></li>
-<li><p>Allows you to preview themes in real time</p></li>
-</ul>
-<p>Install dev shiny with <code>remotes::install_github("rstudio/shiny")</code></p>
-</section><section id="bootstraplib-with-development-shiny-1" class="slide level2">
-<h2><code>bootstraplib</code> with development shiny</h2>
-<pre><code>library(shiny)
-library(bootstraplib)
-
-my_theme &lt;- bs_theme(&quot;primary&quot; = &quot;#232D4B&quot;,
-              &quot;secondary&quot; = &quot;white&quot;,
-              &quot;body-bg&quot; = &quot;orange&quot;)
-
-# Define UI for random distribution app ----
-ui &lt;- fluidPage(
-  theme = my_theme,
-  ...
-)  </code></pre>
-</section><section id="previewing-a-theme-with-bs_theme_preview" class="slide level2">
-<h2>Previewing a theme with <code>bs_theme_preview()</code></h2>
-<pre><code>my_theme &lt;- bs_theme(&quot;primary&quot; = &quot;#232D4B&quot;,
-              &quot;secondary&quot; = &quot;white&quot;,
-              &quot;body-bg&quot; = &quot;orange&quot;)
-              
-bs_theme_preview(my_theme)</code></pre>
-<p><img src=./images/bs_theme_preview.png style="height:75%;width:75%;display:block;margin-left:auto;margin-right:auto"></img></p>
-</section><section id="previewing-your-app-with-run_with_themer" class="slide level2">
-<h2>Previewing your app with <code>run_with_themer()</code></h2>
-<ol type="1">
-<li><p>Setwd to your app directory</p></li>
-<li><p>Run <code>run_with_themer()</code> in console</p></li>
-</ol>
-<p><img src=./images/run_with_themer.png style="height:75%;width:75%;display:block;margin-left:auto;margin-right:auto"></img></p>
-</section><section id="copy-updates-to-app.r" class="slide level2">
-<h2>Copy updates to app.R</h2>
-<pre><code>my_theme &lt;- bs_theme(&quot;primary&quot; = &quot;#232D4B&quot;,
-              &quot;secondary&quot; = &quot;white&quot;,
-              &quot;body-bg&quot; = &quot;orange&quot;)
-              
-my_theme &lt;- bs_theme_update(my_theme, bg = &quot;#4B3E23&quot;, fg = &quot;#000000&quot;)</code></pre>
 </section><section id="theming-plots" class="slide level2">
 <h2>Theming Plots</h2>
 <p>The <code>thematic</code> package enables automatic theming of plots</p>
@@ -778,10 +707,14 @@ shiny::onStop(thematic_off)</code></pre>
 </section><section id="great-for-dark-mode" class="slide level2">
 <h2>Great for Dark Mode!</h2>
 <p><img src=./images/plot.png style="height:95%;width:95%;display:block;margin-left:auto;margin-right:auto"></img></p>
-</section><section id="questions" class="slide level2">
-<h2>Questions?</h2>
+</section><section id="thank-you-questions" class="slide level2">
+<h2>Thank you! Questions?</h2>
 <p><a href="mailto:hpc-support@virginia.edu" class="email">hpc-support@virginia.edu</a></p>
 <table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Office Hours</th>
@@ -791,15 +724,11 @@ shiny::onStop(thematic_off)</code></pre>
 <tbody>
 <tr class="odd">
 <td>Tuesday 3-5pm</td>
-<td><a href="https://virginia.zoom.us/j/304271094" class="uri">https://virginia.zoom.us/j/304271094</a></td>
+<td><a href="https://virginia.zoom.us/j/304271094?pwd=Szdib1kzK1QySlE4eGRGL1BiclpLUT09" class="uri">https://virginia.zoom.us/j/304271094?pwd=Szdib1kzK1QySlE4eGRGL1BiclpLUT09</a></td>
 </tr>
 <tr class="even">
-<td>Wednesday 3-5pm</td>
-<td><a href="https://virginia.zoom.us/s/812332138" class="uri">https://virginia.zoom.us/s/812332138</a></td>
-</tr>
-<tr class="odd">
 <td>Thursday 10am-12pm</td>
-<td><a href="https://virginia.zoom.us/j/723009972" class="uri">https://virginia.zoom.us/j/723009972</a></td>
+<td><a href="https://virginia.zoom.us/j/723009972?pwd=SWJMV09xMUp6M0lJY04yRXIwM1ZNdz09" class="uri">https://virginia.zoom.us/j/723009972?pwd=SWJMV09xMUp6M0lJY04yRXIwM1ZNdz09</a></td>
 </tr>
 </tbody>
 </table>

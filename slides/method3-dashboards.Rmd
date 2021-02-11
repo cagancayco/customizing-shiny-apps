@@ -17,7 +17,7 @@ Packages like `flexdashboard` and `shinydashboard` let you create dashboards for
 
 <br>
 
-We'll just touch on some shinydashboard basics today
+We'll just touch on shinydashboard today
 
 <br>
 

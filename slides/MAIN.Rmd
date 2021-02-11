@@ -34,5 +34,5 @@ output:
 
 # Method 4: Bootstraplib
 
-```{r child="method4-bootstraplib.Rmd"}
+```{r child="method4-bslib.Rmd"}
 ```

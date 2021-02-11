@@ -1,20 +1,20 @@
 library(shiny)
-library(bootstraplib)
+library(bslib)
 library(thematic)
 library(shinythemes)
 
-my_theme <- bs_theme("primary" = "#232D4B",
-         "secondary" = "orange",
-         "bg" = "#E98181",
-         "fg" = "#000")
+# code for making plots in "dark mode"
+# thematic_on()
+# onStop(thematic_off)
 
-thematic_on(font = "auto")
-shiny::onStop(thematic_off)
+my_theme <- bs_theme(version = 4, bootswatch = "darkly")
+my_theme <- bs_theme_update(my_theme, bg = "#232D4B", fg = "#E57200", primary = "#E57200")
+
 
 # Define UI for random distribution app ----
 ui <- fluidPage(
-  theme =  shinytheme("darkly"),
-  
+  # theme = shinytheme("darkly"),
+  theme = my_theme,
   # App title ----
   titlePanel("Tabsets"),
   
@@ -59,6 +59,8 @@ ui <- fluidPage(
 
 # Define server logic for random distribution app ----
 server <- function(input, output) {
+  # bs_themer()
+  
   
   # Reactive expression to generate the requested distribution ----
   # This is called whenever the inputs change. The output functions
@@ -99,6 +101,8 @@ server <- function(input, output) {
   })
   
 }
+
+
 
 # Create Shiny app ----
 shinyApp(ui, server)
